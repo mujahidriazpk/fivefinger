@@ -114,9 +114,9 @@ const Home = () => {
           />
           <div className="text-[#F4660F] text-4xl text-center uppercase">Pricing - how much i charge</div>
           <SectionTitle className="m-0">
-            <div className="text-[#000000] text-base text-center">My pricing is upfront & non negotiable. I charge the same rate as my lawyer. $500 per hour with an eight hour minimum which totals $4,500 for the days work. Full payment due before service in small unmarked bills.</div>
-            <div className="text-[#000000] text-base text-center py-10">No refunds, No guarantees.</div>
-            <div className="text-[#000000] text-base text-center">Please note i require a private jet to pick me up from an anonymous location. If no private jet is provided first class air fare is an additional charge. Additional hidden fees are for cleaning supplies and an unmarked car for quick get away.</div>
+            <div className="text-[#000000] text-base text-center font-shadows">My pricing is upfront & non negotiable. I charge the same rate as my lawyer. $500 per hour with an eight hour minimum which totals $4,500 for the days work. Full payment due before service in small unmarked bills.</div>
+            <div className="text-[#000000] text-base text-center py-10 font-shadows">No refunds, No guarantees.</div>
+            <div className="text-[#000000] text-base text-center font-shadows">Please note i require a private jet to pick me up from an anonymous location. If no private jet is provided first class air fare is an additional charge. Additional hidden fees are for cleaning supplies and an unmarked car for quick get away.</div>
           </SectionTitle>
           <div className="max-w-2xl py-4 text-lg leading-normal">
             <div className="grid gap-5 grid-cols-3">
@@ -152,6 +152,9 @@ const Home = () => {
           />
         </Container>
       </div>
+      <Container className="flex flex-wrap justify-center text-centers">
+        <div className="text-[#F4660F] text-4xl text-center uppercase">CLEANING SERVICES I PROVIDE</div>
+        </Container>
     </>
   );
 }

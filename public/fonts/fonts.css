@@ -1,6 +1,13 @@
 @font-face {
     font-family: 'Octin Prison';
-    src: url('octin prison rg.otf') format('otf');
+    src: url('octinprisonrg.woff') format('woff');
+    /* Add other font formats if available */
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Shadows Into Light Two';
+    src: url('ShadowsIntoLightTwo-Regular.woff') format('woff');
     /* Add other font formats if available */
     font-weight: normal;
     font-style: normal;

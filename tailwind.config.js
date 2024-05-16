@@ -13,6 +13,7 @@ module.exports = {
     },
     fontFamily: {
       sans: ["Octin Prison", ...defaultTheme.fontFamily.sans],
+      shadows: ["Shadows Into Light Two"],
       stock: [defaultTheme.fontFamily.sans],
     },
   },
