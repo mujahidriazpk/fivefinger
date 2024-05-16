@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Head from "next/head";
 import Container from "../components/container";
+import Video from "../components/video";
 import SectionTitle from "../components/sectionTitle";
 import heroImg from "../public/img/hero_img.png";
 import navImg from "../public/img/nav_bg.png";
@@ -41,7 +42,7 @@ const Home = () => {
           loading="eager"
           placeholder="blur"
         />
-        <div className="absolute top-0 w-full h-auto text-center">
+        <div className="absolute top-0 w-full h-auto text-center mt-10">
           <div className="text-[#F4660F] text-3xl ">FIVE FINGER DISCOUNT</div>
           <div className="text-[#F4660F] text-4xl">CLEANING SERVICE</div>
         </div>
@@ -57,7 +58,7 @@ const Home = () => {
         <div className="text-[#F4660F] text-4xl text-center">HOUSE CLEANING SERVICES</div>
         <Image
           src={cleanerImg1}
-          className="flex m-auto my-20"
+          className="flex m-auto mt-20"
           alt="Hero Illustration"
           loading="eager"
           placeholder="blur"
@@ -285,7 +286,7 @@ const Home = () => {
       <Container className="flex justify-center text-centers">
         <div className="flex flex-row text-[#F4660F] text-4xl text-center uppercase">Customer Reviews</div>
       </Container>
-      <div className="flex flex-wrap py-20 pl-30 justify-center bg-[url('/img/testimonial.png')] bg-no-repeat bg-left-top bg-cover h-full h-[600px]">
+      <div className="flex flex-wrap py-20 pl-30 justify-center bg-[url('/img/testimonial.png')] bg-no-repeat bg-left-top bg-cover h-[600px]">
 
       </div>
       <Container className="flex flex-wrap py-0 justify-center text-centers">
@@ -315,12 +316,12 @@ const Home = () => {
           </div>
         </div>
       </Container>
-      <div className="flex flex-wrap relative pt-20 pl-30 justify-center">
+      <div className="flex flex-wrap relative pl-30 justify-center">
         <Container className="">
           <div className="text-[#F4660F] text-4xl text-center">SHOP CLEANING SUPPLIES</div>
           <Image
             src={car}
-            className="flex m-auto mt-20"
+            className="flex m-auto mt-5"
             alt="Hero Illustration"
             loading="eager"
             placeholder="blur"
@@ -376,6 +377,10 @@ const Home = () => {
         />
 
       </div>
+      <Container className="flex justify-center text-centers pb-0">
+        <div className="flex flex-row text-[#F4660F] text-4xl text-center uppercase">120+ Things to clean</div>
+      </Container>
+      <Video />
     </>
   );
 }
