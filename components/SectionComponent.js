@@ -2,51 +2,25 @@
 
 import { useState, useEffect } from 'react';
 import Image from "next/image";
-import { GraphQLClient, gql } from 'graphql-request';
 import Container from "../components/container";
-
-const endpoint = 'http://144.217.79.28/~fivefingerdiscou/graphql';
-const graphQLClient = new GraphQLClient(endpoint);
-
-const GET_SECTION_BY_TITLE = gql`
-  query GetSectionByTitle($title: String!) {
-    sections(where: { title: $title 
-        categoryId: 5
-    }) {
-      nodes {
-        id
-        title
-        content
-        sectionsFields{
-            layout
-            hasBackgroundImage
-            mainImage
-        }
-      }
-    }
-  }
-`;
+import { useQuery } from '@apollo/client';
+import { GET_SECTION_BY_TITLE } from '../graphql/query'; //Made the file for graphql queries from which we import whenever we need
 
 const SectionComponent = ({ title }) => {
     const [section, setSection] = useState(null);
-    const [loading, setLoading] = useState(true);
+
+    //Made use of useQuery hook of apollo for optimized cliet-end fetch
+    const {data, error, loading} = useQuery(GET_SECTION_BY_TITLE, {variables: {title: title}})
 
     useEffect(() => {
-        const fetchSection = async () => {
-            try {
-                const data = await graphQLClient.request(GET_SECTION_BY_TITLE, { title });
-                setSection(data.sections.nodes.length > 0 ? data.sections.nodes[0] : null);
-            } catch (error) {
-                console.error("Error fetching section:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchSection();
-    }, [title]);
+      //Set the data as soon as its fetched
+      if(data){
+        setSection(data.sections.nodes.length > 0 ? data.sections.nodes[0] : null);
+      }
+    }, [data])
 
     if (loading) return <div>Loading...</div>;
+    if (error) return <div>{error}</div>;
     if (!section) return <div>Section not found</div>;
     if (section.sectionsFields.layout === 'full') {
         return (
@@ -78,7 +52,7 @@ const SectionComponent = ({ title }) => {
                         width="1200"
                         height="500"
                         alt={section.title}
-                        loading="eager"
+                        loading="lazy"
                     />
                 </Container>
 
