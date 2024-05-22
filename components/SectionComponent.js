@@ -11,7 +11,7 @@ const graphQLClient = new GraphQLClient(endpoint);
 const GET_SECTION_BY_TITLE = gql`
   query GetSectionByTitle($title: String!) {
     sections(where: { title: $title 
-        categoryId: 6
+        categoryId: 5
     }) {
       nodes {
         id
