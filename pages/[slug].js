@@ -5,7 +5,7 @@
 
 import SectionComponent from '../components/SectionComponent';
 import Header from "../components/header";
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import apolloClient from '../lib/apollo';
 import { GET_ALL_PAGES, GET_PAGE_BY_SLUG, GET_SECTION_BY_CATEGORY } from "../graphql/query";
 import { useEffect, useState } from "react";

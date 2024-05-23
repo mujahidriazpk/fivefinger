@@ -24,7 +24,7 @@ export const GET_SECTION_BY_TITLE = gql`
 
 export const GET_SECTION_BY_CATEGORY = gql`
   query GetSectionByTitle($category: String!) {
-    sections(where: { categoryName: $category }) {
+    sections(where: {categoryName: $category, orderby: {field: DATE, order: ASC}}) {
       nodes {
         id
         title
