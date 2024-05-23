@@ -10,8 +10,11 @@ export const GET_SECTION_BY_TITLE = gql`
         content
         sectionsFields{
             layout
-            hasBackgroundImage
             mainImage
+            otherImage
+            step1
+            step2
+            step3
         }
       }
     }
