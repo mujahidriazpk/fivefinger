@@ -3,11 +3,10 @@
 import { useState, useEffect } from 'react';
 import Image from "next/image";
 import Container from "../components/container";
+import Emoji from "../components/sectionEmoji";
+import Video from "../components/video";
 import SectionTitle from "../components/sectionTitle";
 import { useQuery } from '@apollo/client';
-import smileImg from "../public/img/smile.png";
-import btnsignupImg from "../public/img/btn_signup.png";
-import btnreviewImg from "../public/img/btn_review.png";
 import { GET_SECTION_BY_TITLE } from '../graphql/query'; //Made the file for graphql queries from which we import whenever we need
 
 const SectionComponent = ({ title }) => {
@@ -31,7 +30,7 @@ const SectionComponent = ({ title }) => {
             <div>
                 <div className="flex flex-wrap justify-center h-full">
                     <Container>
-                        <div className="text-[#F4660F] text-4xl text-center uppercase">{section.title}</div>
+                        <div className="text-[#F4660F] text-4xl text-center uppercase"><div dangerouslySetInnerHTML={{ __html: section.sectionsFields.sectionTitle }} /></div>
                     </Container>
                     <Image
                         src={section.sectionsFields.mainImage}
@@ -41,6 +40,9 @@ const SectionComponent = ({ title }) => {
                         alt={section.title}
                         loading="eager"
                     />
+                    {section.sectionsFields.hasButton === 'Yes' && (
+                        <Emoji className="" emoji={section.sectionsFields.emoji} buttonText={section.sectionsFields.buttonText} />
+                    )}
                 </div>
             </div>
         );
@@ -48,7 +50,7 @@ const SectionComponent = ({ title }) => {
         return (
             <div>
                 <Container>
-                    <div className="text-[#F4660F] text-4xl text-center uppercase">{section.title}</div>
+                    <div className="text-[#F4660F] text-4xl text-center uppercase"><div dangerouslySetInnerHTML={{ __html: section.sectionsFields.sectionTitle }} /></div>
                 </Container>
                 <SectionTitle pretitle="" title="">
                     <div className="grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
@@ -80,6 +82,9 @@ const SectionComponent = ({ title }) => {
                             />
                         </div>
                     </div>
+                    {section.sectionsFields.hasButton === 'Yes' && (
+                        <Emoji emoji={section.sectionsFields.emoji} buttonText={section.sectionsFields.buttonText} />
+                    )}
                 </SectionTitle>
             </div>
         );
@@ -88,52 +93,42 @@ const SectionComponent = ({ title }) => {
             <div>
                 <div className="flex flex-wrap bg-[#FFEDE2]">
                     <Container className="flex flex-wrap py-0 justify-center text-centers">
-                    <Image
-                        src={section.sectionsFields.mainImage}
-                        className="flex justify-end w-full"
-                        width="1200"
-                        height="500"
-                        alt={section.title}
-                        loading="eager"
-                    />
-                        <div className="text-[#F4660F] text-4xl text-center uppercase w-full">{section.title}</div>
-                        <SectionTitle className="m-0">
-                        {section.content}
-                        </SectionTitle>
-                        <div className="max-w-2xl py-4 text-lg leading-normal">
-                            <div className="grid gap-5 grid-cols-3">
-                                <Image
-                                    src={smileImg}
-                                    className="flex m-auto"
-                                    alt="Hero Illustration"
-                                    loading="eager"
-                                    placeholder="blur"
-                                />
-                                <Image
-                                    src={btnsignupImg}
-                                    className="flex m-auto"
-                                    alt="Hero Illustration"
-                                    loading="eager"
-                                    placeholder="blur"
-                                />
-                                <Image
-                                    src={smileImg}
-                                    className="flex m-auto"
-                                    alt="Hero Illustration"
-                                    loading="eager"
-                                    placeholder="blur"
-                                />
-                            </div>
-                        </div>
                         <Image
-                        src={section.sectionsFields.otherImage}
-                        className="flex justify-end w-full"
-                        width="1200"
-                        height="500"
-                        alt={section.title}
-                        loading="eager"
-                    />
+                            src={section.sectionsFields.mainImage}
+                            className="flex m-auto pt-20 pb-10"
+                            width="1200"
+                            height="500"
+                            alt={section.title}
+                            loading="eager"
+                        />
+                        <div className="text-[#F4660F] text-4xl text-center uppercase w-full"><div dangerouslySetInnerHTML={{ __html: section.sectionsFields.sectionTitle }} /></div>
+                        <SectionTitle className="">
+                            <div dangerouslySetInnerHTML={{ __html: section.content }} />
+                        </SectionTitle>
+
+                        {section.sectionsFields.hasButton === 'Yes' && (
+                            <Emoji emoji={section.sectionsFields.emoji} buttonText={section.sectionsFields.buttonText} />
+                        )}
+                        <Image
+                            src={section.sectionsFields.otherImage}
+                            className="flex m-auto pt-20 pb-10"
+                            width="1200"
+                            height="500"
+                            alt={section.title}
+                            loading="eager"
+                        />
                     </Container>
+                </div>
+            </div>
+        );
+    }else if (section.sectionsFields.layout === 'video') {
+        return (
+            <div>
+                <div className="flex flex-wrap justify-center h-full">
+                    <Container>
+                        <div className="text-[#F4660F] text-4xl text-center uppercase"><div dangerouslySetInnerHTML={{ __html: section.sectionsFields.sectionTitle }} /></div>
+                    </Container>
+                    <Video videoLink={section.sectionsFields.videoLink} videoImage={section.sectionsFields.mainImage} />
                 </div>
             </div>
         );
@@ -143,8 +138,8 @@ const SectionComponent = ({ title }) => {
             <div>
 
                 <Container>
-                    <div className="text-[#F4660F] text-4xl text-center">{section.title}</div>
-                    {section.content && (<div dangerouslySetInnerHTML={{ __html: section.content }} /> )}
+                    <div className="text-[#F4660F] text-4xl text-center"><div dangerouslySetInnerHTML={{ __html: section.sectionsFields.sectionTitle }} /></div>
+                    {section.content && (<div dangerouslySetInnerHTML={{ __html: section.content }} />)}
                     <Image
                         src={section.sectionsFields.mainImage}
                         className="flex m-auto mt-20"
@@ -153,6 +148,9 @@ const SectionComponent = ({ title }) => {
                         alt={section.title}
                         loading="lazy"
                     />
+                    {section.sectionsFields.hasButton === 'Yes' && (
+                        <Emoji emoji={section.sectionsFields.emoji} buttonText={section.sectionsFields.buttonText} />
+                    )}
                 </Container>
 
                 {/*
@@ -166,6 +164,7 @@ const SectionComponent = ({ title }) => {
       */}
             </div>
         );
+        
     }
 
 };

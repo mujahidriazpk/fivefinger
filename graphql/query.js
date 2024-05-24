@@ -9,12 +9,17 @@ export const GET_SECTION_BY_TITLE = gql`
         title
         content
         sectionsFields{
+            sectionTitle
             layout
             mainImage
             otherImage
             step1
             step2
             step3
+            hasButton
+            emoji
+            buttonText
+            videoLink
         }
       }
     }
