@@ -9,6 +9,9 @@ import { useQuery } from '@apollo/client';
 import apolloClient from '../lib/apollo';
 import { GET_ALL_PAGES, GET_PAGE_BY_SLUG, GET_SECTION_BY_CATEGORY } from "../graphql/query";
 import { useEffect, useState } from "react";
+import FAB from '../components/fab';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 const client = apolloClient();
 
@@ -52,15 +55,13 @@ export async function getStaticProps({ params }) {
   };
 }
 
-const Page = ({ page }) => {
+const Page = ({page}) => {
 
-  if(!page){
-    return router.push("/404")
-  }
   const [catgorizedSection, setCatgorizedSection] = useState([]); //array to store the titles fetched from backend
+  const router = useRouter();
 
   //Made use of useQuery hook of apollo for optimized cliet-end fetch
-  const { data, error, loading } = useQuery(GET_SECTION_BY_CATEGORY, { variables: { category: "atlanta" } })
+  const { data, error, loading } = useQuery(GET_SECTION_BY_CATEGORY, { variables: { category: router.query["category"] ?? "Atlanta" } })
 
   useEffect(() => {
     //Set the data as soon as its fetched
@@ -69,27 +70,34 @@ const Page = ({ page }) => {
     }
   }, [data])
 
-  
-  // const title = "Car Cleaning";
-  // const title_section = "HOUSE CLEANING SERVICES";
-  // const title_section2 = "HOUSE CLEANING SERVICES & BUSINESS CLEANING SERVICE";
+  useEffect(() => {
+    if (!router.query.category) {
+      router.replace({
+        pathname: router.pathname,
+        query: { ...router.query, category: 'Atlanta' }
+      }, undefined, { shallow: true });
+    }
+  }, [router.query.category]);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
   if (!catgorizedSection) return <div>Section not found</div>;
 
   return (
-
+    <>
+    <Head>
+      <title>{page.title}</title>
+    </Head>
     <div>
+      <FAB />
       <Header />
-
-      {/* Mapping SectionComponent on the array where the titles are saved once fetched from the backend */}
       {
       catgorizedSection.map(
         (item) => <SectionComponent title={item.title} key={item.id} />
         )
       }
     </div>
+    </>
   );
 };
 
