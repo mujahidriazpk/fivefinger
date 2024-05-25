@@ -86,7 +86,7 @@ const Page = ({page}) => {
   return (
     <>
     <Head>
-      <title>{page.title}</title>
+      <title>{page.title} | {router.query["category"]}</title>
     </Head>
     <div>
       <FAB />
