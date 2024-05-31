@@ -54,6 +54,19 @@ export const GET_ALL_CATEGORIES = gql`
             nodes {
                 id
                 name
+                slug
+            }
+        }
+    }
+`
+
+export const GET_CATEGORIES_BY_SLUG = gql`
+    query GetCategoriesBySlug($slug: String!) {
+        categories(where: {slug: [$slug]}) {
+            nodes {
+                id
+                name
+                slug
             }
         }
     }
@@ -67,4 +80,15 @@ export const GET_ALL_PAGES = gql`
             }
         }
     }
+`
+
+export const GET_SERVICES_BY_LOCATION = gql`
+query GetServicesByCategory($location: String) {
+  services(where: {categoryName: $location}) {
+    nodes {
+      id
+      title
+    }
+  }
+}
 `

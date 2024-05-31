@@ -3,27 +3,25 @@ import Head from "next/head";
 import Container from "../components/container";
 import Video from "../components/video";
 import SectionTitle from "../components/sectionTitle";
-import heroImg from "../public/img/hero_img.png";
-import navImg from "../public/img/nav_bg.png";
-import house from "../public/img/house.png";
-import dinning from "../public/img/dinning.png";
-import cleanerImg1 from "../public/img/cleaner-1.png";
-import stepImg1 from "../public/img/step1.png";
-import stepImg2 from "../public/img/step2.png";
-import stepImg3 from "../public/img/step3.png";
-import moneyImg from "../public/img/money.png";
-import smileImg from "../public/img/smile.png";
-import btnsignupImg from "../public/img/btn_signup.png";
-import btnreviewImg from "../public/img/btn_review.png";
-import btnshopImg from "../public/img/btn_shop.png";
-import jetImg from "../public/img/jet_clean.png";
-import serviceImg from "../public/img/service_list.png";
-import testimonial1Img from "../public/img/testimonial1.png";
-import car from "../public/img/car.png";
-import hand from "../public/img/hand.png";
-import map from "../public/img/map.png";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_ALL_CATEGORIES } from "../graphql/query";
 
 const Home = () => {
+
+
+  const [categories, setCategories] = useState([]);
+
+  const { data, error, loading } = useQuery(GET_ALL_CATEGORIES)
+
+  useEffect(() => {
+    //Set the data as soon as its fetched
+    if (data) {
+      setCategories(data.categories.nodes.length > 0 ? data.categories.nodes : []);
+    }
+  }, [data])
+
   return (
     <>
       <Head>
@@ -36,10 +34,10 @@ const Home = () => {
       </Head>
       <div className="flex flex-wrap justify-center bg-[url('/img/hero_bg.png')] bg-no-repeat bg-center bg-cover h-full">
         <Image
-          src={navImg}
+          src={require("../public/img/nav_bg.png")}
           className="flex justify-end w-full"
           alt="Hero Illustration"
-          loading="eager"
+          loading="lazy"
           placeholder="blur"
         />
         <div className="absolute top-0 w-full h-auto text-center mt-10">
@@ -47,20 +45,20 @@ const Home = () => {
           <div className="text-[#F4660F] text-4xl">CLEANING SERVICE</div>
         </div>
         <Image
-          src={heroImg}
+          src={require("../public/img/hero_img.png")}
           className="flex justify-end"
           alt="Hero Illustration"
-          loading="eager"
+          loading="lazy"
           placeholder="blur"
         />
       </div>
       <Container>
         <div className="text-[#F4660F] text-4xl text-center">HOUSE CLEANING SERVICES</div>
         <Image
-          src={cleanerImg1}
+          src={require("../public/img/cleaner-1.png")}
           className="flex m-auto mt-20"
           alt="Hero Illustration"
-          loading="eager"
+          loading="lazy"
           placeholder="blur"
         />
       </Container>
@@ -69,10 +67,10 @@ const Home = () => {
       </Container>
       <div className="flex flex-wrap justify-center h-full">
         <Image
-          src={house}
+          src={require("../public/img/house.png")}
           className="flex justify-end w-full"
           alt="Hero Illustration"
-          loading="eager"
+          loading="lazy"
           placeholder="blur"
         />
       </div>
@@ -85,28 +83,28 @@ const Home = () => {
         <div className="grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
           <div className="flex flex-col justify-between text-center w-full h-full">
             <Image
-              src={stepImg1}
+              src={require("../public/img/step1.png")}
               className="flex m-auto"
               alt="Hero Illustration"
-              loading="eager"
+              loading="lazy"
               placeholder="blur"
             />
           </div>
           <div className="flex flex-col justify-center text-center w-full h-full">
             <Image
-              src={stepImg2}
+              src={require("../public/img/step2.png")}
               className="flex m-auto"
               alt="Hero Illustration"
-              loading="eager"
+              loading="lazy"
               placeholder="blur"
             />
           </div>
           <div className="flex flex-col justify-between text-center w-full h-full">
             <Image
-              src={stepImg3}
+              src={require("../public/img/step3.png")}
               className="flex m-auto"
               alt="Hero Illustration"
-              loading="eager"
+              loading="lazy"
               placeholder="blur"
             />
           </div>
@@ -115,10 +113,10 @@ const Home = () => {
       <div className="flex flex-wrap bg-[#FFEDE2]">
         <Container className="flex flex-wrap py-0 justify-center text-centers">
           <Image
-            src={moneyImg}
+            src={require("../public/img/money.png")}
             className="flex m-auto pt-20 pb-10"
             alt="Hero Illustration"
-            loading="eager"
+            loading="lazy"
             placeholder="blur"
           />
           <div className="text-[#F4660F] text-4xl text-center uppercase w-full">Pricing - how much i charge</div>
@@ -130,33 +128,33 @@ const Home = () => {
           <div className="max-w-2xl py-4 text-lg leading-normal">
             <div className="grid gap-5 grid-cols-3">
               <Image
-                src={smileImg}
+                src={require("../public/img/smile.png")}
                 className="flex m-auto"
                 alt="Hero Illustration"
-                loading="eager"
+                loading="lazy"
                 placeholder="blur"
               />
               <Image
-                src={btnsignupImg}
+                src={require("../public/img/btn_signup.png")}
                 className="flex m-auto"
                 alt="Hero Illustration"
-                loading="eager"
+                loading="lazy"
                 placeholder="blur"
               />
               <Image
-                src={smileImg}
+                src={require("../public/img/smile.png")}
                 className="flex m-auto"
                 alt="Hero Illustration"
-                loading="eager"
+                loading="lazy"
                 placeholder="blur"
               />
             </div>
           </div>
           <Image
-            src={jetImg}
+            src={require("../public/img/jet_clean.png")}
             className="flex m-auto my-20"
             alt="Hero Illustration"
-            loading="eager"
+            loading="lazy"
             placeholder="blur"
           />
         </Container>
@@ -267,19 +265,19 @@ const Home = () => {
       </SectionTitle>
       <Container className="flex flex-wrap py-0 justify-center text-centers">
         <Image
-          src={dinning}
+          src={require("../public/img/dinning.png")}
           className="flex m-auto my-20"
           alt="Hero Illustration"
-          loading="eager"
+          loading="lazy"
           placeholder="blur"
         />
       </Container>
       <div className="flex flex-wrap py-20 pl-30 justify-center bg-[url('/img/stair.png')] bg-no-repeat bg-left-top bg-cover h-full">
         <Image
-          src={serviceImg}
+          src={require("../public/img/service_list.png")}
           className="flex justify-end"
           alt="Hero Illustration"
-          loading="eager"
+          loading="lazy"
           placeholder="blur"
         />
       </div>
@@ -293,24 +291,24 @@ const Home = () => {
         <div className="max-w-2xl py-4 text-lg leading-normal">
           <div className="grid gap-5 grid-cols-3">
             <Image
-              src={smileImg}
+              src={require("../public/img/smile.png")}
               className="flex m-auto"
               alt="Hero Illustration"
-              loading="eager"
+              loading="lazy"
               placeholder="blur"
             />
             <Image
-              src={btnreviewImg}
+              src={require("../public/img/btn_review.png")}
               className="flex m-auto"
               alt="Hero Illustration"
-              loading="eager"
+              loading="lazy"
               placeholder="blur"
             />
             <Image
-              src={smileImg}
+              src={require("../public/img/smile.png")}
               className="flex m-auto"
               alt="Hero Illustration"
-              loading="eager"
+              loading="lazy"
               placeholder="blur"
             />
           </div>
@@ -320,19 +318,19 @@ const Home = () => {
         <Container className="">
           <div className="text-[#F4660F] text-4xl text-center">SHOP CLEANING SUPPLIES</div>
           <Image
-            src={car}
+            src={require("../public/img/car.png")}
             className="flex m-auto mt-5"
             alt="Hero Illustration"
-            loading="eager"
+            loading="lazy"
             placeholder="blur"
           />
         </Container>
 
         <Image
-          src={hand}
+          src={require("../public/img/hand.png")}
           className="flex m-auto my-20 absolute right-0 top-52"
           alt="Hero Illustration"
-          loading="eager"
+          loading="lazy"
           placeholder="blur"
         />
       </div>
@@ -343,24 +341,24 @@ const Home = () => {
         <div className="max-w-2xl py-4 text-lg leading-normal">
           <div className="grid gap-5 grid-cols-3">
             <Image
-              src={smileImg}
+              src={require("../public/img/smile.png")}
               className="flex m-auto"
               alt="Hero Illustration"
-              loading="eager"
+              loading="lazy"
               placeholder="blur"
             />
             <Image
-              src={btnreviewImg}
+              src={require("../public/img/btn_review.png")}
               className="flex m-auto"
               alt="Hero Illustration"
-              loading="eager"
+              loading="lazy"
               placeholder="blur"
             />
             <Image
-              src={smileImg}
+              src={require("../public/img/smile.png")}
               className="flex m-auto"
               alt="Hero Illustration"
-              loading="eager"
+              loading="lazy"
               placeholder="blur"
             />
           </div>
@@ -369,10 +367,10 @@ const Home = () => {
       <div className="flex flex-g py-20 pl-30 justify-center bg-[url('/img/map_bg.png')] bg-no-repeat bg-left-top bg-cover h-full">
        {/*<div className="text-[#F4660F] text-4xl text-center uppercase m-auto">MY top 10 service areas</div>*/}
         <Image
-          src={map}
+          src={require("../public/img/map.png")}
           className="m-auto mt-96"
           alt="Hero Illustration"
-          loading="eager"
+          loading="lazy"
           placeholder="blur"
         />
 
@@ -381,6 +379,16 @@ const Home = () => {
         <div className="flex flex-row text-[#F4660F] text-4xl text-center uppercase">120+ Things to clean</div>
       </Container>
       <Video />
+      <footer className="footer p-10 bg-white text-black border-black border-t-2 flex justify-center items-center">
+        <nav className="w-3/4">
+          <h6 className="footer-title">Locations</h6>
+          <div className="grid grid-cols-2 lg:grid-cols-10 gap-1 sm:gap-1">
+            {categories.map((item, index) => {
+              return (<Link href={item.slug} key={index} className="link link-hover">{item.name}</Link>)
+            })}
+          </div>
+        </nav>
+      </footer>
     </>
   );
 }
