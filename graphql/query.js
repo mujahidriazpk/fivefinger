@@ -88,6 +88,20 @@ query GetServicesByCategory($location: String) {
     nodes {
       id
       title
+      slug
+    }
+  }
+}
+`
+
+export const GET_SERVICES_BY_SLUG = gql`
+query GetServicesByCategory($slug: String) {
+  services(where: {name: $slug}) {
+    nodes {
+      id
+      title
+      slug
+      content
     }
   }
 }

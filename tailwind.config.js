@@ -9,6 +9,8 @@ module.exports = {
     extend: {
       colors: {
         trueGray: colors.neutral,
+        primary: "#ff5722",
+        secondary: "#ffede2"
       },
     },
     fontFamily: {

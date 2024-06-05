@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_CATEGORIES } from "../graphql/query";
+import ListImage from "../components/ListImage";
 
 const Home = () => {
 
@@ -170,45 +171,31 @@ const Home = () => {
           <div className="flex flex-col justify-between text-center w-full h-full">
             <ul>
               <li className="flex items-center mb-2 font-shadows">
-                <svg className="w-5 h-5 mr-2" fill="#DBDBDB" stroke="#DBDBDB" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z"></path>
-                </svg>
+                <ListImage/>
                 Home Cleaning
               </li>
               <li className="flex items-center mb-2 font-shadows">
-                <svg className="w-5 h-5 mr-2" fill="#DBDBDB" stroke="#DBDBDB" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z"></path>
-                </svg>
+                <ListImage />
                 Carpet Cleaning
               </li>
               <li className="flex items-center mb-2 font-shadows">
-                <svg className="w-5 h-5 mr-2" fill="#DBDBDB" stroke="#DBDBDB" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z"></path>
-                </svg>
+                <ListImage />
                 Deep Cleaning
               </li>
               <li className="flex items-center mb-2 font-shadows">
-                <svg className="w-5 h-5 mr-2" fill="#DBDBDB" stroke="#DBDBDB" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z"></path>
-                </svg>
+                <ListImage />
                 Gutter Cleaning
               </li>
               <li className="flex items-center mb-2 font-shadows">
-                <svg className="w-5 h-5 mr-2" fill="#DBDBDB" stroke="#DBDBDB" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z"></path>
-                </svg>
+                <ListImage />
                 Trash Can Cleaning
               </li>
               <li className="flex items-center mb-2 font-shadows">
-                <svg className="w-5 h-5 mr-2" fill="#DBDBDB" stroke="#DBDBDB" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z"></path>
-                </svg>
+                <ListImage />
                 Window Cleaning
               </li>
               <li className="flex items-center mb-2 font-shadows">
-                <svg className="w-5 h-5 mr-2" fill="#DBDBDB" stroke="#DBDBDB" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z"></path>
-                </svg>
+                <ListImage />
                 Drain Cleaning
               </li>
 

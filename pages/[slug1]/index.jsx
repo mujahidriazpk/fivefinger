@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_CATEGORIES, GET_CATEGORIES_BY_SLUG, GET_SERVICES_BY_LOCATION } from '../../graphql/query';
 import apolloClient from '../../lib/apollo';
+import Link from 'next/link';
 
 const client = apolloClient();
 
@@ -65,7 +66,13 @@ const LocationPage = () => {
     return (
         <>
             {locationServices.map((item) => {
-                return (<div>{"Name: " + item.title + "; ID: " + item.id}</div>)
+                return (
+                    <Link href={"/"+slug1+"/"+item.slug}>
+                        <div>
+                            {"Name: " + item.title + "; ID: " + item.id}
+                        </div>
+                    </Link>
+                )
             })}
         </>
     )
