@@ -76,10 +76,6 @@ const ServicePage = () => {
     // if (loading) return <div>Loading...</div>;
     // if (error) return <div>{error}</div>;
 
-
-//     const Pricing = styled.div`
-//   width: 45%;
-//`;
     const services = ["Home Cleaning", "Carpet Cleaning", "Deep Cleaning", "Gutter Cleaning", "Trash Can Cleaning", "Window Cleaning", "Drain Cleaning"]
 
     return (
