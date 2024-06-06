@@ -1,7 +1,11 @@
 import Image from 'next/image';
-import { GET_ALL_CATEGORIES, GET_SERVICES_BY_LOCATION, GET_SERVICES_BY_SLUG } from '../../graphql/query';
+import { GET_ALL_CATEGORIES, GET_SERVICES_BY_LOCATION, GET_SERVICES_BY_SLUG,GET_CATEGORIES_BY_SLUG } from '../../graphql/query';
 import apolloClient from '../../lib/apollo';
 import SideCards from '../../components/SideCards';
+import Footer from '../../components/footer';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import { useQuery } from '@apollo/client';
 
 const client = apolloClient();
 
@@ -76,15 +80,41 @@ const ServicePage = () => {
     // if (loading) return <div>Loading...</div>;
     // if (error) return <div>{error}</div>;
 
+
+    //     const Pricing = styled.div`
+    //   width: 45%;
+    //`;
+    
+    const router = useRouter();
+    //const { slug1 } = router.query;
+    //const [locations, setLocations] = useState({})
+    //const { data_2, error_2, loading_2 } = useQuery(GET_CATEGORIES_BY_SLUG, { variables: { slug: slug1 } })
+    //useEffect(() => {
+      //  setLocations(data?.categories?.nodes?.length > 0 ? data.categories.nodes[0] : {});
+    //}, [data_2]);
+    //if (!loading_2) {
+      //  console.log(locations);
+    //}
+
+    const { slug2 } = router.query;
+    const [locationServices, setLocationServices] = useState({})
+    const { data, error, loading } = useQuery(GET_SERVICES_BY_SLUG, { variables: { slug: slug2 } })
+    useEffect(() => {
+        setLocationServices(data?.services?.nodes?.length > 0 ? data.services.nodes[0] : {});
+    }, [data]);
+    if (!loading) {
+        //console.log(locationServices);
+    }
+    
     const services = ["Home Cleaning", "Carpet Cleaning", "Deep Cleaning", "Gutter Cleaning", "Trash Can Cleaning", "Window Cleaning", "Drain Cleaning"]
 
     return (
         <>
             <div className='text-center relative'>
                 {/* <HeroImage src="/atlanta-skyline.jpg" alt="Atlanta Skyline" /> */}
-                {/* <div className="flex flex-wrap justify-center bg-[url('/img/hero_bg.png')] bg-no-repeat bg-center bg-cover h-full">
+                <div className="flex flex-wrap justify-start bg-[url('/img/location_img.png')] bg-no-repeat bg-left-top bg-cover h-[600px]">
                     <Image
-                        src={require("../../public/img/nav_bg.png")}
+                        src={require("../../public/img/nav_bg_white.png")}
                         className="flex justify-end w-full"
                         alt="Hero Illustration"
                         loading="lazy"
@@ -94,32 +124,19 @@ const ServicePage = () => {
                         <div className="text-[#F4660F] text-3xl ">FIVE FINGER DISCOUNT</div>
                         <div className="text-[#F4660F] text-4xl">CLEANING SERVICE</div>
                     </div>
-                    <Image
-                        src={require("../../public/img/hero_img.png")}
-                        className="flex justify-end"
-                        alt="Hero Illustration"
-                        loading="lazy"
-                        placeholder="blur"
-                        height={10}
-                    />
+                    
+                <div className="flex flex-wrap float-left  py-6 px-4 w-1/2 text-4xl text-white bg-[url('/img/heading_bg.png')] bg-no-repeat bg-left-top bg-cover" >
+                    <h1>{locationServices.title} IN ATLANTA, GA</h1>
                 </div>
-                <div style={{
-                    position: 'absolute',
-                    top: '50%',
-                    // left: '50%',
-                    // transform: 'translate(-50%, -50%)',
-                    background: 'rgba(255, 87, 34, 0.8)',
-                    padding: '20px',
-                    borderRadius: '5px',
-                }}>
-                    <h1>HOME CLEANING IN ATLANTA, GA</h1>
-                </div> */}
+                </div>
+                <div className="flex flex-wrap p-20">
+                    <div className='w-2/3 pr-10'><div dangerouslySetInnerHTML={{ __html: locationServices.content }} /></div>
+                    <div className='w-1/3 relative mt-[-300px]'><SideCards services={services} /></div>
+                </div>
 
-                <div className='w-64 top-[50%] right-[20%] absolute'>
-                    <SideCards services={services}/>
-                </div>
 
             </div>
+            <Footer />
         </>
     )
 };
