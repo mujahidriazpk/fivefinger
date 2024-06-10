@@ -4,6 +4,7 @@ import ListImage from './ListImage';
 const SideCards = ({services}) => {
     return(
         <>
+             {(services && services.length > 0) && 
             <div className='bg-secondary p-5 rounded-lg text-left'>
                 <h1 className='text-primary mb-3 text-lg'>OTHER SERVICES IN ATLANTA, GA</h1>
                 {services.map((service, index) => {
@@ -15,6 +16,7 @@ const SideCards = ({services}) => {
                     )
                 })}
             </div>
+            }
             <div className='bg-secondary mt-2 text-primary rounded-lg p-5'>
                 <h1>MY top 10 service areas</h1>
                 <Image

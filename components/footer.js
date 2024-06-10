@@ -22,7 +22,7 @@ export default function Footer() {
           <h6 className="footer-title">Locations</h6>
           <div className="grid grid-cols-2 lg:grid-cols-10 gap-1 sm:gap-1">
             {categories.map((item, index) => {
-              return (<Link href={item.slug} key={index} className="link link-hover">{item.name}</Link>)
+              return (<Link href={`/${item.slug}`} key={index} className="link link-hover">{item.name}</Link>)
             })}
           </div>
         </nav>

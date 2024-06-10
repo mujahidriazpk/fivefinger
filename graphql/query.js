@@ -67,7 +67,7 @@ export const GET_CATEGORIES_BY_SLUG = gql`
                 id
                 name
                 slug
-                categories{
+                categoryFields{
                   categoryPageImage
                 }
             }
