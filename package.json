@@ -1,7 +1,7 @@
 {
-  "name": "nextly-template",
+  "name": "five_finger_discount_cleaning_service",
   "version": "0.1.0",
-  "description": "Nextly Landing Page Template",
+  "description": "Five Finger Discount Cleaning Service",
   "private": true,
   "scripts": {
     "dev": "next dev",
