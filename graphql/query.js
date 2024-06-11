@@ -50,7 +50,7 @@ export const GET_PAGE_BY_SLUG = gql`
 
 export const GET_ALL_CATEGORIES = gql`
     query GetCategories {
-        categories {
+        categories(first: 1000) {
             nodes {
                 id
                 name
