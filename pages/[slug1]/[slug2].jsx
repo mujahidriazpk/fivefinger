@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Head from "next/head";
 import { GET_ALL_CATEGORIES, GET_SERVICES_BY_LOCATION, GET_SERVICES_BY_SLUG,GET_CATEGORIES_BY_SLUG } from '../../graphql/query';
 import apolloClient from '../../lib/apollo';
 import SideCards from '../../components/SideCards';
@@ -124,6 +125,14 @@ const ServicePage = () => {
 
     return (
         <>
+        <Head>
+        <title>FIVE FINGER DISCOUNT CLEANING SERVICE</title>
+        <meta
+          name="description"
+          content="FIVE FINGER DISCOUNT CLEANING SERVICE"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
             <div className='text-center relative'>
                 {/* <HeroImage src="/atlanta-skyline.jpg" alt="Atlanta Skyline" /> */}
                 <div className="flex flex-wrap justify-start bg-[url('/img/location_img.png')] bg-no-repeat bg-left-top bg-cover h-[600px]">
@@ -140,7 +149,7 @@ const ServicePage = () => {
                     </div>
                     
                 <div className="flex flex-col float-left align-bottom justify-end py-0 px-0 w-1/2 text-2xl text-white bg-auto bg-left-bottom bg-[url('/img/heading_bg.png')] bg-no-repeat lg:bg-left-top lg:bg-cover lg:py-6 lg:px-4 lg:w-1/2 lg:text-4xl" >
-                    <h1 className='mb-10'>{locationServices.title} IN ATLANTA, GA</h1>
+                    <h1 className='mb-10'>{locationServices.title} IN { slug1 }</h1>
                 </div>
                 </div>
                 <div className="flex flex-wrap p-10 lg:p-20">
