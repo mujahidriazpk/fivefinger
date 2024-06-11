@@ -98,7 +98,7 @@ query GetServicesByCategory($location: String) {
 `
 
 export const GET_SERVICES_BY_SLUG = gql`
-query GetServicesByCategory($slug: String) {
+query GetServicesBySlug($slug: String) {
   services(where: {name: $slug}) {
     nodes {
       id
@@ -108,4 +108,16 @@ query GetServicesByCategory($slug: String) {
     }
   }
 }
+`
+
+export const GET_ALL_SERVICES_EXCEPT_ONE = gql`
+query GetAllServicesExceptOne($excludedId: ID) {
+    services(where: {notIn: [$excludedId]}) {
+      nodes {
+        id
+        title
+        slug
+      }
+    }
+  }
 `

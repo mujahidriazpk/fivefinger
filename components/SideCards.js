@@ -3,25 +3,27 @@ import ListImage from './ListImage';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-const SideCards = ({services}) => {
-    
+const SideCards = ({ services, servicesLoading }) => {
+
     const router = useRouter();
     const { slug1 } = router.query;
-    return(
+    return (
         <>
-             {(services && services.length > 0) && 
-            <div className='bg-secondary p-5 rounded-lg text-left'>
-                <h1 className='text-primary mb-3 text-lg'>OTHER SERVICES IN { slug1 }</h1>
-                {services.map((service, index) => {
-                    return (
-                        <li key={index} className="py-1 flex items-center mb-2 font-shadows">
-                            <ListImage key={index} /><Link href={"/" + slug1 + "/" + service.toLowerCase().replace(/ /g, '-')}>
-                            {service}
-                            </Link>
-                        </li>
-                    )
-                })}
-            </div>
+            {(services && services.length > 0) &&
+                <div className='bg-secondary p-5 rounded-lg text-left'>
+                    <h1 className='text-primary mb-3 text-lg'>OTHER SERVICES IN {slug1}</h1>
+                    {servicesLoading ? <p>Loading...</p> :
+                        services.map((service, index) => {
+                            return (
+                                <li key={index} className="py-1 flex items-center mb-2 font-shadows">
+                                    <ListImage key={index} />
+                                    <Link href={"/" + slug1 + "/" + service.slug}>
+                                        {service.title}
+                                    </Link>
+                                </li>
+                            )
+                        })}
+                </div>
             }
             <div className='bg-secondary mt-2 text-primary rounded-lg p-5'>
                 <h1>MY top 10 service areas</h1>
