@@ -89,9 +89,9 @@ const ServicePage = () => {
     const router = useRouter();
     const { slug1 } = router.query;
     const { loading_location, error_location, data_location } = useQuery(GET_CATEGORIES_BY_SLUG, {
-        variables: { slug: 'atlanta' },
+        variables: { slug: slug1 },
         onCompleted: (data_location) => {
-          //console.log('Query completed with data:', data_location.categories.nodes[0];
+          //console.log( data_location.categories.nodes[0]);
           const location = data_location.categories.nodes[0];
           
       console.log(location);
@@ -100,17 +100,6 @@ const ServicePage = () => {
           console.log('Query encountered an error:', error_location);
         },
       });
-/*
-    const [locations, setLocations] = useState({})
-    const { data_location, error_location, loading_location } = useQuery(GET_CATEGORIES_BY_SLUG, { variables: { slug: 'atlanta' } });
-    console.log('Executing query:', slug1);
-    useEffect(() => {
-        setLocations(data_location?.categories?.nodes?.length > 0 ? data_location.categories.nodes[0] : {});
-    }, [data_location]);
-    if (!loading_location) {
-        console.log(data_location);
-    }
-*/
     const { slug2 } = router.query;
     const [locationServices, setLocationServices] = useState({})
     const { data, error, loading } = useQuery(GET_SERVICES_BY_SLUG, { variables: { slug: slug2 } })
@@ -122,7 +111,8 @@ const ServicePage = () => {
     }
     
     const services = ["Home Cleaning", "Carpet Cleaning", "Deep Cleaning", "Gutter Cleaning", "Trash Can Cleaning", "Window Cleaning", "Drain Cleaning"]
-
+    if (loading_location) return <div>Loading...</div>;
+   
     return (
         <>
         <Head>
