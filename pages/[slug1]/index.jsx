@@ -77,10 +77,10 @@ const LocationPage = () => {
     return (
         <>
             <Head>
-                <title>FIVE FINGER DISCOUNT CLEANING SERVICE</title>
+                <title>Cleaning Services in {categoryInfo.name} | FIVE FINGER DISCOUNT CLEANING SERVICE</title>
                 <meta
                     name="description"
-                    content="FIVE FINGER DISCOUNT CLEANING SERVICE"
+                    content={`Cleaning Services in ${categoryInfo.name} | FIVE FINGER DISCOUNT CLEANING SERVICE`}
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
@@ -122,7 +122,6 @@ const LocationPage = () => {
                                         {item.title}
                                     </Link>
                                 </li>
-                                
                             )
                         })}
                     </div>

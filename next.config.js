@@ -3,6 +3,9 @@ module.exports = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  experimental: {
+    appDir: true,
+  },
   images: {
     remotePatterns: [
       {

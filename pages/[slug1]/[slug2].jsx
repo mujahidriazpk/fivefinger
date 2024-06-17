@@ -99,10 +99,10 @@ const ServicePage = () => {
     return (
         <>
             <Head>
-                <title>FIVE FINGER DISCOUNT CLEANING SERVICE</title>
+                <title>{service.title} in {categoryInfo.name} | FIVE FINGER DISCOUNT CLEANING SERVICE</title>
                 <meta
                     name="description"
-                    content="FIVE FINGER DISCOUNT CLEANING SERVICE"
+                    content={`${service.title} in ${slug1} | FIVE FINGER DISCOUNT CLEANING SERVICE`}
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>

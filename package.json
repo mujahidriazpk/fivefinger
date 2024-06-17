@@ -14,10 +14,9 @@
   },
   "keywords": [
     "nextjs",
-    "tailwindcss",
-    "free"
+    "tailwindcss"
   ],
-  "author": "Surjith S M",
+  "author": "Mayank Devangkumar Tamakuwala",
   "license": "ISC",
   "dependencies": {
     "@apollo/client": "^3.10.4",
