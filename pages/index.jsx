@@ -3,26 +3,10 @@ import Head from "next/head";
 import Container from "../components/container";
 import Video from "../components/video";
 import SectionTitle from "../components/sectionTitle";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { useQuery } from "@apollo/client";
-import { GET_ALL_CATEGORIES } from "../graphql/query";
 import ListImage from "../components/ListImage";
 import Footer from '../components/footer';
 
 const Home = () => {
-
-
-  const [categories, setCategories] = useState([]);
-
-  const { data, error, loading } = useQuery(GET_ALL_CATEGORIES)
-
-  useEffect(() => {
-    //Set the data as soon as its fetched
-    if (data) {
-      setCategories(data.categories.nodes.length > 0 ? data.categories.nodes : []);
-    }
-  }, [data])
 
   return (
     <>

@@ -8,6 +8,7 @@ import Footer from '../../components/footer';
 import { GET_ALL_CATEGORIES, GET_CATEGORIES_BY_SLUG, GET_SERVICES_BY_LOCATION } from '../../graphql/query';
 import apolloClient from '../../lib/apollo';
 import Link from 'next/link';
+import ListImage from '../../components/ListImage';
 
 const client = apolloClient();
 
@@ -105,18 +106,29 @@ const LocationPage = () => {
                     </div>
                 </div>
                 <div className="flex flex-wrap p-10 lg:p-20">
+                    {
+                        categoryInfo?.description && 
+                        <div 
+                            className='w-full p-0 lg:w-2/3 lg:pr-10 text-left text-2xl mb-10' 
+                            dangerouslySetInnerHTML={{__html: categoryInfo.description}} 
+                        />
+                    }
                     <div className='w-full p-0 lg:w-2/3 lg:pr-10 text-left'>
                         {locationServices.map((item, index) => {
                             return (
-                                <Link href={"/" + slug1 + "/" + item.slug} key={index}>
-                                    <div>
-                                        {"Name: " + item.title + "; ID: " + item.id}
-                                    </div>
-                                </Link>
+                                <li key={index} className="py-1 flex items-center mb-2 font-shadows text-xl cursor-pointer">
+                                    <ListImage key={index} />
+                                    <Link href={"/" + slug1 + "/" + item.slug}>
+                                        {item.title}
+                                    </Link>
+                                </li>
+                                
                             )
                         })}
                     </div>
-                    <div className='w-full p-0 mt-4 lg:w-1/3 lg:relative lg:mt-[-300px]'><SideCards services="" /></div>
+                    <div className='w-full p-0 mt-4 lg:w-1/3 lg:relative lg:mt-[-300px]'>
+                        <SideCards />
+                    </div>
                 </div>
 
 

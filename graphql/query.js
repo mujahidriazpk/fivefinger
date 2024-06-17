@@ -70,6 +70,7 @@ export const GET_CATEGORIES_BY_SLUG = gql`
                 categoryFields{
                   categoryPageImage
                 }
+                description
             }
         }
     }
