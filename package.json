@@ -16,7 +16,6 @@
     "nextjs",
     "tailwindcss"
   ],
-  "author": "Mayank Devangkumar Tamakuwala",
   "license": "ISC",
   "dependencies": {
     "@apollo/client": "^3.10.4",
