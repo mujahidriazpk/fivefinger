@@ -129,7 +129,7 @@ const ServicePage = () => {
                 </div>
                 <div className="flex flex-wrap p-10 lg:p-20">
                     <div className='w-full p-0 lg:w-2/3 lg:pr-10 text-left font-shadows'>
-                        <div dangerouslySetInnerHTML={{ __html: service.content }} />
+                        <div dangerouslySetInnerHTML={{ __html: service?.content?.replace("[CITY]", categoryInfo?.name) }} />
                     </div>
                     <div className='w-full p-0 mt-4 lg:w-1/3 lg:relative lg:-mt-72'>
                         <SideCards services={otherServices} servicesLoading={other_services_loading} />

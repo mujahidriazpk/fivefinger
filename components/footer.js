@@ -30,7 +30,7 @@ export default function Footer() {
           <h6 className="footer-title">SERVICE CITIES</h6>
           {loading && <div>Loading...</div>}
           {error && <div>{error}</div>}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-28 gap-y-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-28 gap-y-3">
             {categories.map((item, index) => {
               return (<Link href={`/${item.slug}`} key={index} className="text-xs link link-hover">{item.name}</Link>)
             })}
