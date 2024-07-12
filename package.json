@@ -1,7 +1,7 @@
 {
-  "name": "five_finger_discount_cleaning_service",
+  "name": "nextly-template",
   "version": "0.1.0",
-  "description": "Five Finger Discount Cleaning Service",
+  "description": "Nextly Landing Page Template",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -14,8 +14,10 @@
   },
   "keywords": [
     "nextjs",
-    "tailwindcss"
+    "tailwindcss",
+    "free"
   ],
+  "author": "Surjith S M",
   "license": "ISC",
   "dependencies": {
     "@apollo/client": "^3.10.4",
@@ -27,7 +29,6 @@
     "@heroicons/react": "^2.0.17",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "graphql": "^16.8.1",
-    "graphql-request": "^7.0.1",
     "next": "^13.3.1",
     "next-themes": "^0.2.1",
     "react": "^18",
@@ -36,7 +37,6 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
-    "daisyui": "^4.11.1",
     "eslint-config-prettier": "^8.8.0",
     "postcss": "^8.4.23",
     "tailwindcss": "^3.3.1"
