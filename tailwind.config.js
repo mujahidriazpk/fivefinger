@@ -9,6 +9,8 @@ module.exports = {
     extend: {
       colors: {
         trueGray: colors.neutral,
+        primary: "#ff5722",
+        secondary: "#ffede2"
       },
     },
     fontFamily: {
@@ -20,5 +22,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/aspect-ratio")],
+  plugins: [require("@tailwindcss/aspect-ratio"), require('daisyui')],
 };
